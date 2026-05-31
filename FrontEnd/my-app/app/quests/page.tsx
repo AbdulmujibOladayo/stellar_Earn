@@ -243,7 +243,7 @@ function QuestsContent() {
           <div className="mb-6" data-onboarding="quest-board-list">
             <LazyLoad>
               <QuestList
-                quests={paginatedQuests}
+                quests={paginatedQuests as unknown as Quest[]}
                 isLoading={false}
                 error={null}
                 onQuestClick={handleQuestClick}
@@ -294,4 +294,3 @@ export default function QuestsPage() {
     </Suspense>
   );
 }
-

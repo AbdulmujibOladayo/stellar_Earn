@@ -20,7 +20,7 @@ const PerformanceMonitor: React.FC = () => {
         id: metric.id,
         delta: metric.delta,
         rating: metric.rating,
-        href: metric.href,
+        href: (metric as Record<string, unknown>).href,
         entries: metric.entries,
       });
     });

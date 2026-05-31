@@ -26,3 +26,16 @@ afterEach(() => {
   // Reset handlers after each test `important for test isolation`
   server.resetHandlers();
 });
+
+import 'vitest';
+
+declare module 'vitest' {
+  interface Assertion<T = unknown> {
+    toBeInTheDocument(...args: unknown[]): void;
+    toBeEmptyDOMElement(...args: unknown[]): void;
+    toHaveTextContent(...args: unknown[]): void;
+    toHaveClass(...args: unknown[]): void;
+    toHaveAttribute(...args: unknown[]): void;
+    toBeDisabled(...args: unknown[]): void;
+  }
+}

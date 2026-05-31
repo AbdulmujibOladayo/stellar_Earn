@@ -75,10 +75,7 @@ export function RetryButton({
         <span>{isLoading ? 'Retrying...' : buttonText}</span>
       </button>
       {error && (
-        <p
-          className="text-xs text-red-600 dark:text-red-400"
-          role="alert"
-        >
+        <p className="text-xs text-red-600 dark:text-red-400" role="alert">
           {error}
         </p>
       )}

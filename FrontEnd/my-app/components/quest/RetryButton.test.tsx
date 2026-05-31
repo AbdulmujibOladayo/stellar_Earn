@@ -74,14 +74,12 @@ describe('RetryButton', () => {
   it('displays custom button text', () => {
     const onRetry = vi.fn();
     render(
-      <RetryButton
-        isVisible={true}
-        onRetry={onRetry}
-        buttonText="Try Again"
-      />
+      <RetryButton isVisible={true} onRetry={onRetry} buttonText="Try Again" />
     );
 
-    expect(screen.getByRole('button', { name: /try again/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /try again/i })
+    ).toBeInTheDocument();
   });
 
   it('shows error message when retry fails', async () => {
@@ -102,21 +100,13 @@ describe('RetryButton', () => {
   it('has isLoading prop to control loading state', () => {
     const onRetry = vi.fn();
     const { rerender } = render(
-      <RetryButton
-        isVisible={true}
-        isLoading={false}
-        onRetry={onRetry}
-      />
+      <RetryButton isVisible={true} isLoading={false} onRetry={onRetry} />
     );
 
     expect(screen.getByRole('button', { name: /retry/i })).not.toBeDisabled();
 
     rerender(
-      <RetryButton
-        isVisible={true}
-        isLoading={true}
-        onRetry={onRetry}
-      />
+      <RetryButton isVisible={true} isLoading={true} onRetry={onRetry} />
     );
 
     expect(screen.getByRole('button')).toBeDisabled();
@@ -125,13 +115,7 @@ describe('RetryButton', () => {
 
   it('supports full width styling', () => {
     const onRetry = vi.fn();
-    render(
-      <RetryButton
-        isVisible={true}
-        onRetry={onRetry}
-        fullWidth={true}
-      />
-    );
+    render(<RetryButton isVisible={true} onRetry={onRetry} fullWidth={true} />);
 
     const button = screen.getByRole('button');
     expect(button).toHaveClass('w-full');
@@ -162,22 +146,14 @@ describe('RetryButton', () => {
   it('updates aria-busy when loading state changes', () => {
     const onRetry = vi.fn();
     const { rerender } = render(
-      <RetryButton
-        isVisible={true}
-        isLoading={false}
-        onRetry={onRetry}
-      />
+      <RetryButton isVisible={true} isLoading={false} onRetry={onRetry} />
     );
 
     let button = screen.getByRole('button');
     expect(button).toHaveAttribute('aria-busy', 'false');
 
     rerender(
-      <RetryButton
-        isVisible={true}
-        isLoading={true}
-        onRetry={onRetry}
-      />
+      <RetryButton isVisible={true} isLoading={true} onRetry={onRetry} />
     );
 
     button = screen.getByRole('button');

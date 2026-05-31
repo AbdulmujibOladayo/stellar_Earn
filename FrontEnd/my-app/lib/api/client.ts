@@ -236,7 +236,12 @@ apiClient.interceptors.response.use(
       _retry?: boolean;
     };
 
-    if (!error.response && (error.code === 'ERR_NETWORK' || error.code === 'ECONNABORTED' || axios.isCancel(error))) {
+    if (
+      !error.response &&
+      (error.code === 'ERR_NETWORK' ||
+        error.code === 'ECONNABORTED' ||
+        axios.isCancel(error))
+    ) {
       return Promise.reject(transformAxiosError(error));
     }
 

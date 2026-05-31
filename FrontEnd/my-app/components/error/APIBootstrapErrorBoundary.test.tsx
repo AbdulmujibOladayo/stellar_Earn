@@ -1,4 +1,10 @@
-import { render, screen, fireEvent, waitFor, within } from '@testing-library/react';
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+  within,
+} from '@testing-library/react';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import React from 'react';
 import { APIBootstrapErrorBoundary } from '@/components/error/APIBootstrapErrorBoundary';
@@ -33,8 +39,12 @@ describe('APIBootstrapErrorBoundary', () => {
       </APIBootstrapErrorBoundary>
     );
 
-    expect(screen.getByText(/Failed to Load FailingComponent/i)).toBeInTheDocument();
-    expect(screen.getByText(/issue while loading this section/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Failed to Load FailingComponent/i)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/issue while loading this section/i)
+    ).toBeInTheDocument();
   });
 
   it('should display retry button', () => {
@@ -68,7 +78,9 @@ describe('APIBootstrapErrorBoundary', () => {
       </APIBootstrapErrorBoundary>
     );
 
-    expect(screen.getByText(/Failed to Load TestComponent/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Failed to Load TestComponent/i)
+    ).toBeInTheDocument();
 
     // Fix the error condition
     shouldThrow = false;
@@ -98,7 +110,10 @@ describe('APIBootstrapErrorBoundary', () => {
     };
 
     render(
-      <APIBootstrapErrorBoundary componentName="TestComponent" onError={onErrorMock}>
+      <APIBootstrapErrorBoundary
+        componentName="TestComponent"
+        onError={onErrorMock}
+      >
         <ThrowError />
       </APIBootstrapErrorBoundary>
     );
@@ -130,8 +145,12 @@ describe('APIBootstrapErrorBoundary', () => {
       </APIBootstrapErrorBoundary>
     );
 
-    expect(screen.getByText(/Custom Fallback: TestComponent/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /Custom Retry/i })).toBeInTheDocument();
+    expect(
+      screen.getByText(/Custom Fallback: TestComponent/i)
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', { name: /Custom Retry/i })
+    ).toBeInTheDocument();
   });
 
   it('should show retry count when retrying multiple times', async () => {
@@ -212,7 +231,9 @@ describe('BootstrapErrorFallback', () => {
       />
     );
 
-    expect(screen.getByText(/Failed to Load TestComponent/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Failed to Load TestComponent/i)
+    ).toBeInTheDocument();
   });
 
   it('should detect and display network errors', () => {
@@ -254,7 +275,9 @@ describe('BootstrapErrorFallback', () => {
       />
     );
 
-    const retryButton = screen.getByRole('button', { name: /Retry loading TestComponent/i });
+    const retryButton = screen.getByRole('button', {
+      name: /Retry loading TestComponent/i,
+    });
     fireEvent.click(retryButton);
 
     expect(mockResetError).toHaveBeenCalled();
@@ -273,7 +296,9 @@ describe('BootstrapErrorFallback', () => {
 
     expect(screen.getByText(/What you can try:/i)).toBeInTheDocument();
     expect(screen.getByText(/Refresh the page/i)).toBeInTheDocument();
-    expect(screen.getByText(/Check your internet connection/i)).toBeInTheDocument();
+    expect(
+      screen.getByText(/Check your internet connection/i)
+    ).toBeInTheDocument();
   });
 
   it('should display retry count when provided', () => {

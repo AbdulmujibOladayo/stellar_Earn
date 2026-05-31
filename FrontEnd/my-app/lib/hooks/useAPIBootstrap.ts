@@ -150,7 +150,15 @@ export function useAPIBootstrap<T>(
 
       throw error;
     }
-  }, [fetchFn, retries, initialDelay, onError, componentName, timeout, state.retryCount]);
+  }, [
+    fetchFn,
+    retries,
+    initialDelay,
+    onError,
+    componentName,
+    timeout,
+    state.retryCount,
+  ]);
 
   /**
    * Manual retry function for user-initiated retries
@@ -240,11 +248,7 @@ export function useBootstrapWithErrorBoundary<T>(
     shouldRetry?: (error: Error, attempt: number) => boolean;
   } = {}
 ) {
-  const {
-    fallbackData,
-    shouldRetry,
-    ...apiOptions
-  } = options;
+  const { fallbackData, shouldRetry, ...apiOptions } = options;
 
   const state = useAPIBootstrap(fetchFn, apiOptions);
 

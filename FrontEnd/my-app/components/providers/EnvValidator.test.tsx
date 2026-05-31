@@ -219,9 +219,7 @@ describe('EnvValidator Component - Unit Tests', () => {
       );
 
       await waitFor(() => {
-        expect(
-          screen.getByText(/Backend API base URL/i)
-        ).toBeInTheDocument();
+        expect(screen.getByText(/Backend API base URL/i)).toBeInTheDocument();
       });
 
       if (originalEnv) {
@@ -314,7 +312,9 @@ describe('EnvValidator Component - Unit Tests', () => {
         expect(
           screen.getByText(/NEXT_PUBLIC_SOROBAN_RPC_URL/i)
         ).toBeInTheDocument();
-        expect(screen.getByText(/NEXT_PUBLIC_CONTRACT_ID/i)).toBeInTheDocument();
+        expect(
+          screen.getByText(/NEXT_PUBLIC_CONTRACT_ID/i)
+        ).toBeInTheDocument();
       });
 
       if (originalEnv) {
@@ -514,7 +514,9 @@ describe('EnvValidator Component - Unit Tests', () => {
       );
 
       await waitFor(() => {
-        const flex = container.querySelector('.flex.items-center.justify-center');
+        const flex = container.querySelector(
+          '.flex.items-center.justify-center'
+        );
         expect(flex).toBeInTheDocument();
       });
 

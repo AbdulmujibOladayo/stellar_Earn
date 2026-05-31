@@ -34,9 +34,7 @@ describe('OfflineIndicator', () => {
     const onDismiss = vi.fn();
     const user = userEvent.setup();
 
-    render(
-      <OfflineIndicator isOffline={true} onDismiss={onDismiss} />
-    );
+    render(<OfflineIndicator isOffline={true} onDismiss={onDismiss} />);
 
     const dismissButton = screen.getByRole('button', { name: /dismiss/i });
     await user.click(dismissButton);

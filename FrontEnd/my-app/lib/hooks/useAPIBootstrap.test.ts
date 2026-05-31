@@ -188,7 +188,10 @@ describe('useAPIBootstrap', () => {
 
   it('should respect timeout option', async () => {
     const mockFetch = vi.fn(
-      () => new Promise((resolve) => setTimeout(() => resolve({ data: 'test' }), 1000))
+      () =>
+        new Promise((resolve) =>
+          setTimeout(() => resolve({ data: 'test' }), 1000)
+        )
     );
 
     const { result } = renderHook(() =>
@@ -290,7 +293,10 @@ describe('useAPIBootstrap', () => {
 
   it('should cleanup on unmount', async () => {
     const mockFetch = vi.fn(
-      () => new Promise((resolve) => setTimeout(() => resolve({ data: 'test' }), 1000))
+      () =>
+        new Promise((resolve) =>
+          setTimeout(() => resolve({ data: 'test' }), 1000)
+        )
     );
 
     const { unmount } = renderHook(() =>

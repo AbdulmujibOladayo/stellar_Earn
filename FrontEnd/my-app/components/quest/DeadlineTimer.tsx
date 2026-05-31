@@ -1,10 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import {
-  calculateTimeRemaining,
-  type TimeRemaining,
-} from '@/lib/utils/date';
+import { calculateTimeRemaining, type TimeRemaining } from '@/lib/utils/date';
 
 interface DeadlineTimerProps {
   deadline: string;

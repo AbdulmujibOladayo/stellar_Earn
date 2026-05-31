@@ -34,9 +34,7 @@ export default function QuestDetailPage() {
       setQuest(data as unknown as Quest);
       trackEvent(ANALYTICS_EVENTS.QUEST_VIEW, { questId });
     } catch (err) {
-      setError(
-        err instanceof Error ? err : new Error('Failed to fetch quest')
-      );
+      setError(err instanceof Error ? err : new Error('Failed to fetch quest'));
     } finally {
       setIsLoading(false);
     }
